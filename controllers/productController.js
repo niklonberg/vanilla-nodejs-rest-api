@@ -40,7 +40,7 @@ async function createProduct(req, res) {
       description: "my new product",
       price: 200,
     };
-    const newProduct = Product.create(product);
+    const newProduct = await Product.create(product);
 
     res.writeHead(201, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(newProduct));
@@ -52,4 +52,5 @@ async function createProduct(req, res) {
 module.exports = {
   getProducts,
   getProduct,
+  createProduct,
 };
