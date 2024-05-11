@@ -18,7 +18,7 @@ function create(product) {
   return new Promise((resolve, reject) => {
     const newProduct = { ...product, id: crypto.randomUUID() };
     products.push(newProduct);
-    writeDataToFile("../data/products.json", products);
+    writeDataToFile("./data/products.json", products);
     resolve(newProduct);
   });
 }
