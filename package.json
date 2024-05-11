@@ -4,7 +4,7 @@
   "description": "Practice http request response cycle, using a controller and model to get our products   and really understand whats going on under the hood",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch server.js"
   },
   "keywords": [],
   "author": "",
