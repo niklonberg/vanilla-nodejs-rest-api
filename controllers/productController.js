@@ -17,14 +17,15 @@ async function getProducts(req, res) {
 // @route  GET /api/products/:id
 async function getProduct(req, res, id) {
   try {
-    const product = await Product.findById();
+    const product = await Product.findById(id);
 
     if (!product) {
       res.writeHead(404, { "Content-type": "application/json" });
       res.end(JSON.stringify({ message: "product not found" }));
+    } else {
+      res.writeHead(200, { "Content-type": "application/json" });
+      res.end(JSON.stringify(product));
     }
-    res.writeHead(200, { "Content-type": "application/json" });
-    res.end(JSON.stringify(product));
   } catch (error) {
     console.log(error);
   }
