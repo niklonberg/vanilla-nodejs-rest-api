@@ -40,13 +40,12 @@
 /************************************************ version 3 ************************************************/
 
 const http = require("http");
-const products = require("./data/products");
+const { getProducts } = require("./controllers/productController");
 const PORT = process.env.PORT || 5000;
 
 const server = http.createServer((req, res) => {
   if (req.url === "/api/products" && req.method === "GET") {
-    res.writeHead(200, { "Content-type": "application/json" });
-    res.end(JSON.stringify(products));
+    getProducts(req, res);
   } else {
     res.writeHead(404, { "Content-type": "application/json" });
     res.end(JSON.stringify({ message: "route not found" }));
