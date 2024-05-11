@@ -54,7 +54,7 @@ async function createProduct(req, res) {
 
 // @desc   Update product
 // @route  PUT /api/products/:id
-async function createProduct(req, res, id) {
+async function updateProduct(req, res, id) {
   try {
     const productToUpdate = await Product.findById(id);
 
@@ -83,4 +83,5 @@ module.exports = {
   getProducts,
   getProduct,
   createProduct,
+  updateProduct,
 };
