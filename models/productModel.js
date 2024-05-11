@@ -1,11 +1,11 @@
 const products = require("../data/products");
 
-function find() {
+function findAll() {
   return new Promise((resolve, reject) => {
     resolve(products);
   });
 }
 
 module.exports = {
-  find,
+  findAll,
 };
