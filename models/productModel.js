@@ -1,4 +1,4 @@
-const products = require("../data/products");
+let products = require("../data/products");
 const { writeDataToFile } = require("../utils");
 
 function findAll() {
@@ -32,9 +32,18 @@ function update(id, productData) {
   });
 }
 
+function remove(id) {
+  return new Promise((resolve, reject) => {
+    products = products.filter((product) => product.id !== id);
+    writeDataToFile("./data/products.json", products);
+    resolve();
+  });
+}
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
+  remove,
 };

@@ -45,6 +45,7 @@ const {
   getProduct,
   createProduct,
   updateProduct,
+  deleteProduct,
 } = require("./controllers/productController");
 const PORT = process.env.PORT || 5000;
 
@@ -65,6 +66,12 @@ const server = http.createServer((req, res) => {
   ) {
     const productID = req.url.split("/")[3];
     updateProduct(req, res, productID);
+  } else if (
+    req.url.match(/\/api\/products\/([0-9]+)/) &&
+    req.method === "DELETE"
+  ) {
+    const productID = req.url.split("/")[3];
+    deleteProduct(req, res, productID);
   } else {
     res.writeHead(404, { "Content-type": "application/json" });
     res.end(JSON.stringify({ message: "route not found" }));
